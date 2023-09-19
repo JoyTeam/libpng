@@ -1,0 +1,22 @@
+load("@bazel_skylib//rules:copy_file.bzl", "copy_file")
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+copy_file(
+    name = "pnglibconf",
+    src = "scripts/pnglibconf.h.prebuilt",
+    out = "pnglibconf.h",
+)
+
+cc_library(
+    name = "libpng",
+    srcs = glob([
+        "*.c",
+    ]) + [
+        ":pnglibconf",
+    ],
+    hdrs = glob([
+        "*.h",
+    ]),
+    visibility = ["//visibility:public"],
+    deps = ["@zlib"],
+)

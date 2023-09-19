@@ -39,11 +39,11 @@
 *.su
 
 # Libpng configuration and build artifacts
+/build
 .deps/
 .dirstamp
 Makefile
 autom4te.cache/
-config.h
 config.h.in~
 config.log
 config.status
@@ -76,3 +76,6 @@ pngout.png
 
 # Libpng CI artifacts
 out/
+
+# Bazel
+/bazel-*
